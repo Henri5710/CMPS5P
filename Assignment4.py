@@ -138,13 +138,13 @@ def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
         otherwise return -1
         '''
         exp = 0
-        if !all_smaller(tank, fish):
-            return -1
+        if not all_smaller(tank, fish):
+            exp = -1
         else:
             for row in tank:
                 for bf in row:
                     exp = exp+bf
-            return exp
+        return exp
 
     def slice_tank(tank, y_offset = 0, x_offset = 0):
         return [
@@ -158,8 +158,8 @@ def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
         ]
 
     sums = []
-    width = len(lst[0])
-    height = len(lst)
+    width = len(lst[0]) - 1
+    height = len(lst) - 1
 
     for i in range(0, height):
         for j in range(0, width):
@@ -173,34 +173,7 @@ def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
                     ))
 
     return max(sums)
-
-## henri's code below
-    sums = []
-    if all_smaller(lst,level):
-        y = 0
-        while y != len(lst):
-            x = 0
-            while x+1 != len(lst[y]):
-                total = lst[y][x] + lst[y][x+1]
-                x = x+1
-                sums.append(total)
-            y = y + 1
-        #print(sums)
-        width = len(lst[0])-1
-        height = len(lst) - 1
-        runs = width * height
-        #print(runs)
-        combos = len(lst[0])-1
-        final = []
-        start = 0
-        while runs != 0:
-            sums2 = sums[start]+sums[start+combos]
-            final.append(sums2)
-            runs = runs - 1
-            start = start + 1
-        print(final)
-        result = max(final)
-    return(result)                # DO NOT CHANGE THIS LINE
+               # DO NOT CHANGE THIS LINE
 #                          
 # NO CODE HERE
 #
