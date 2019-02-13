@@ -129,11 +129,31 @@ def all_smaller(lst, level):    # DO NOT CHANGE THIS LINE
 #
 def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
     result = 0                    # DO NOT CHANGE THIS LINE
-    x = len(lst[0])-1
-    y = len(lst)-1
-    total_sqrs = x*y
-    exp = []
-    print (x,y)
+    sums = []
+    if all_smaller(lst,level):
+        y = 0
+        while y != len(lst):
+            x = 0
+            while x+1 != len(lst[y]):
+                total = lst[y][x] + lst[y][x+1]
+                x = x+1
+                sums.append(total)
+            y = y + 1
+        #print(sums)
+        width = len(lst[0])-1
+        height = len(lst) - 1
+        runs = width * height
+        #print(runs)
+        combos = len(lst[0])-1
+        final = []
+        start = 0
+        while runs != 0:
+            sums2 = sums[start]+sums[start+combos]
+            final.append(sums2)
+            runs = runs - 1
+            start = start + 1
+        print(final)
+        result = max(final)
     return(result)                # DO NOT CHANGE THIS LINE
 #                          
 # NO CODE HERE
