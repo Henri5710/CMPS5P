@@ -127,8 +127,54 @@ def all_smaller(lst, level):    # DO NOT CHANGE THIS LINE
 #                          
 # NO CODE HERE
 #
+
 def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
     result = 0                    # DO NOT CHANGE THIS LINE
+    
+    def solve_tank(tank, fish):
+        '''
+        add all values in a tank together if nothing in the tank is bigger than the fish
+
+        otherwise return -1
+        '''
+        exp = 0
+        if !all_smaller(tank, fish):
+            return -1
+        else:
+            for row in tank:
+                for bf in row:
+                    exp = exp+bf
+            return exp
+
+    def slice_tank(tank, y_offset = 0, x_offset = 0):
+        return [
+            [
+                tank[y_offset][x_offset], 
+                tank[y_offset][x_offset+1]
+            ],[
+                tank[y_offset+1][x_offset], 
+                tank[y_offset+1][x_offset+1]
+            ]
+        ]
+
+    sums = []
+    width = len(lst[0])
+    height = len(lst)
+
+    for i in range(0, height):
+        for j in range(0, width):
+            sums.append(
+                solve_tank(
+                    slice_tank(
+                        lst, 
+                        i, 
+                        j), 
+                    level
+                    ))
+
+    return max(sums)
+
+## henri's code below
     sums = []
     if all_smaller(lst,level):
         y = 0
