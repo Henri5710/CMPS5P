@@ -147,15 +147,7 @@ def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
         return exp
 
     def slice_tank(tank, y_offset = 0, x_offset = 0):
-        return [
-            [
-                tank[y_offset][x_offset], 
-                tank[y_offset][x_offset+1]
-            ],[
-                tank[y_offset+1][x_offset], 
-                tank[y_offset+1][x_offset+1]
-            ]
-        ]
+        return [[tank[y_offset][x_offset], tank[y_offset][x_offset+1]],[tank[y_offset+1][x_offset], tank[y_offset+1][x_offset+1] ]]
 
     sums = []
     width = len(lst[0]) - 1
@@ -163,14 +155,7 @@ def max_exp(lst, level):        # DO NOT CHANGE THIS LINE
 
     for i in range(0, height):
         for j in range(0, width):
-            sums.append(
-                solve_tank(
-                    slice_tank(
-                        lst, 
-                        i, 
-                        j), 
-                    level
-                    ))
+            sums.append(solve_tank(slice_tank(lst, i, j), level))
 
     return max(sums)
                # DO NOT CHANGE THIS LINE

@@ -110,7 +110,6 @@ def word_counter(file_name):            # DO NOT CHANGE THIS LINE
 	print(len(file_lines))
 	for i in range (0,len(file_lines)):
 		words = file_lines[i].split(' ' or '\n')
-	print(file_lines[0].split)
 	'''
 	while i < len(file_lines):
 		words = file_lines[i].split()
