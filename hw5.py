@@ -106,18 +106,24 @@ def word_counter(file_name):            # DO NOT CHANGE THIS LINE
 	file = open(file_name,'r')
 	file_lines = file.readlines()
 	file.close()
-	print(file_lines)
-	print(len(file_lines))
+	#print(file_lines)
+	#print(len(file_lines))
 	words = []
 	for i in range (0,len(file_lines)):
 		words.append(file_lines[i].split())
+	flat_words = []
+	for sub in words:
+		for i in sub:
+			flat_words.append(i)
+	print(flat_words)
+
 	'''
 	while i < len(file_lines):
 		words = file_lines[i].split()
 		i = i+1
 		'''
-	count = len(words)
-	print(words)
+	
+	count = len(flat_words)
 	result  = count
 
 	return result                         # DO NOT CHANGE THIS LINE 
