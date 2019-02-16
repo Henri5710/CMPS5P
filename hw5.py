@@ -5,7 +5,6 @@
 #  
 # NO CODE HERE
 #
-'''
 def password_check(password):           # DO NOT CHANGE THIS LINE 
 	result = True                         # DO NOT CHANGE THIS LINE 
 	# Must be at least 8 characters
@@ -93,7 +92,6 @@ if __name__ == "__main__":              # DO NOT CHANGE THIS LINE
   print(password_check('abbbcd1@'))     # DO NOT CHANGE THIS LINE 
   print(password_check('a1@a1@1@'))     # DO NOT CHANGE THIS LINE 
   print(password_check('a123456#7'))    # DO NOT CHANGE THIS LINE 
-'''
 #                          
 # NO CODE HERE
 #
@@ -106,8 +104,6 @@ def word_counter(file_name):            # DO NOT CHANGE THIS LINE
 	file = open(file_name,'r')
 	file_lines = file.readlines()
 	file.close()
-	#print(file_lines)
-	#print(len(file_lines))
 	words = []
 	for i in range (0,len(file_lines)):
 		words.append(file_lines[i].split())
@@ -116,15 +112,7 @@ def word_counter(file_name):            # DO NOT CHANGE THIS LINE
 		for i in sub:
 			flat_words.append(i)
 	print(flat_words)
-
-	'''
-	while i < len(file_lines):
-		words = file_lines[i].split()
-		i = i+1
-		'''
-	
-	count = len(flat_words)
-	result  = count
+	result  = len(flat_words)
 
 	return result                         # DO NOT CHANGE THIS LINE 
 #                          
