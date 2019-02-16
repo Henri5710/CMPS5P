@@ -8,6 +8,64 @@
 def password_check(password):           # DO NOT CHANGE THIS LINE 
 	result = True                         # DO NOT CHANGE THIS LINE 
 	# Must be at least 8 characters
+	alpha = False
+	num = False
+	special = False
+	if len(password) >= 8:
+		#print("1:",result)
+		for c in password:
+			if c == '?':
+				result = False
+				#print("2:",result)
+				return result
+			elif c.isalpha():
+				alpha = True
+			elif c.isdigit():
+				num = True
+			else:
+				special = True
+		#print("3:",result)
+		#print("check:",alpha,num,special)
+		if alpha & num & special:
+			char = ''
+			x = 0
+			while x < len(password):
+				char = password[x]
+				occurence = 1
+				y = x + 1
+				while y < len(password):
+					if password[x] == password[y]:
+						occurence = occurence + 1
+						y = y + 1
+					elif password[x] != password[y]:
+						break
+				if occurence > 2:
+					result = False
+					#print("4:",result)
+					return result
+				else:
+					x = x + occurence
+			#print("5:",result)
+			unique = []
+			for c in password:
+				if c not in unique:
+					unique.append(c)
+			#print('number of unique characters is:', len(unique))
+			#print('length of password is:', len(password))
+			if len(unique) < (len(password)/2.0):
+				result = False
+				#print("6:",result)
+		else:
+			result = False
+			#print("7:",result)
+	else:
+		result = False
+		#print("8:",result)
+	return result                         # DO NOT CHANGE THIS LINE 
+
+
+'''
+#OLD VERSION(INCLUDE ALPHA,NUM,SPECIAL BOOLS TO USE)
 	if len(password) < 8:
 		length = False
 	else:
@@ -20,9 +78,7 @@ def password_check(password):           # DO NOT CHANGE THIS LINE
 		else:
 			question = True
 	# Must have at least one alphabetic, one numberical and one special character
-	alpha = False
-	num = False
-	special = False
+	
 	for c in password:
 		if c.isalpha():
 			alpha = True
@@ -78,8 +134,9 @@ def password_check(password):           # DO NOT CHANGE THIS LINE
 	print('Does it contain at least one letter/number/special:', one_of_each)
 	print('Is a character never repeated more than twice consecutively:', no_repeat)
 	print('Is the number of distinct characters at least half of the password length:', distinct)
-	
-	return result                         # DO NOT CHANGE THIS LINE 
+	'''
+
+
 # 
 # Only use this space to write helper functions (if necessary)
 #
