@@ -12,11 +12,9 @@ def password_check(password):           # DO NOT CHANGE THIS LINE
 	num = False
 	special = False
 	if len(password) >= 8:
-		#print("1:",result)
 		for c in password:
 			if c == '?':
 				result = False
-				#print("2:",result)
 				return result
 			elif c.isalpha():
 				alpha = True
@@ -24,8 +22,6 @@ def password_check(password):           # DO NOT CHANGE THIS LINE
 				num = True
 			else:
 				special = True
-		#print("3:",result)
-		#print("check:",alpha,num,special)
 		if alpha & num & special:
 			char = ''
 			x = 0
@@ -41,26 +37,19 @@ def password_check(password):           # DO NOT CHANGE THIS LINE
 						break
 				if occurence > 2:
 					result = False
-					#print("4:",result)
 					return result
 				else:
 					x = x + occurence
-			#print("5:",result)
 			unique = []
 			for c in password:
 				if c not in unique:
 					unique.append(c)
-			#print('number of unique characters is:', len(unique))
-			#print('length of password is:', len(password))
 			if len(unique) < (len(password)/2.0):
 				result = False
-				#print("6:",result)
 		else:
 			result = False
-			#print("7:",result)
 	else:
 		result = False
-		#print("8:",result)
 	return result                         # DO NOT CHANGE THIS LINE 
 # 
 # Only use this space to write helper functions (if necessary)
@@ -93,7 +82,6 @@ def word_counter(file_name):            # DO NOT CHANGE THIS LINE
 	for sub in words:
 		for i in sub:
 			flat_words.append(i)
-	print(flat_words)
 	result  = len(flat_words)
 
 	return result                         # DO NOT CHANGE THIS LINE 
