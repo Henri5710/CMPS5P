@@ -7,22 +7,30 @@
 #
 def password_check(password):           # DO NOT CHANGE THIS LINE 
 	result = True                         # DO NOT CHANGE THIS LINE 
-	# Must be at least 8 characters
+	#Bools used later declared
 	alpha = False
 	num = False
 	special = False
+	#Check for length:
 	if len(password) >= 8:
 		for c in password:
+			#Check for '?':
 			if c == '?':
 				result = False
 				return result
+			#Check for at least one letter:
 			elif c.isalpha():
 				alpha = True
+			#Check for at least one number:
 			elif c.isdigit():
 				num = True
+			#Check for at least one special
+			#If not '?', or alpha, or num, must be special:
 			else:
 				special = True
+		#Check that there is at least one of each:
 		if alpha & num & special:
+			#Check for consecutive characters:
 			char = ''
 			x = 0
 			while x < len(password):
@@ -40,6 +48,7 @@ def password_check(password):           # DO NOT CHANGE THIS LINE
 					return result
 				else:
 					x = x + occurence
+			#Check that number of unique characters is at least half the length of password:
 			unique = []
 			for c in password:
 				if c not in unique:
@@ -72,16 +81,23 @@ if __name__ == "__main__":              # DO NOT CHANGE THIS LINE
 #
 def word_counter(file_name):            # DO NOT CHANGE THIS LINE 
 	result = 0                            # DO NOT CHANGE THIS LINE 
+	
+	#Read in file:
 	file = open(file_name,'r')
 	file_lines = file.readlines()
 	file.close()
+	
+	#Separate read in lines into words:
 	words = []
 	for i in range (0,len(file_lines)):
 		words.append(file_lines[i].split())
+	
+	#Flatten word list:
 	flat_words = []
 	for sub in words:
 		for i in sub:
 			flat_words.append(i)
+	
 	result  = len(flat_words)
 
 	return result                         # DO NOT CHANGE THIS LINE 
@@ -99,17 +115,27 @@ if __name__ == "__main__":              # DO NOT CHANGE THIS LINE
 def most_frequent(file_name):           # DO NOT CHANGE THIS LINE 
 	result1 = ''                          # DO NOT CHANGE THIS LINE 
 	result2 = 0                           # DO NOT CHANGE THIS LINE 
+	
+	#Read in file:
 	file = open(file_name,'r')
 	file_lines = file.readlines()
 	file.close()
+	
+	#Separate read in lines into words:
 	words = []
 	for i in range (0,len(file_lines)):
 		words.append(file_lines[i].split())
+	
+	#Flatten word list:
 	flat_words = []
 	for sub in words:
 		for i in sub:
 			flat_words.append(i)
+	
+	#Set all words to lower case:
 	flat_words = [c.lower() for c in flat_words]
+	
+	#Create dictionary:
 	mydict = {}
 	keys = []
 	values = []
