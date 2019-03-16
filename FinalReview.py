@@ -43,4 +43,23 @@ class Rectangle:
 	def __init__(self, point1 = Point(), point2 = Point()):
 		self.pt1 = point1
 		self.pt2 = point2
-		
+
+#Recursive Functions:
+#Examples:
+
+def fib(n):
+	if n == 0 or n == 1:
+		return n
+	return fib(n-2)+fib(n-1)
+
+for x in range(0,5):
+	print(fib(x))
+
+def revstr(string):
+	if len(string) == 0:
+		return string
+	return revstr(string[1:])+string[0]
+
+print(revstr("Hi my name is Henri"))
+
+#lambda functions
